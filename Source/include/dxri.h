@@ -26,4 +26,11 @@ public:
 	//should you set up sync here ?? or internal ??
 	//what is the reason behind this code ??
 
+	//notes from 29/11/2023
+	//these functions are fun and nice to have but, the shader, texture, pipeline classes are easy to use and not much higher level than those are in my mind?
+	//maybe, maybe having basic helper functions like "create buffer -> dx12resource" etc. and easily extendible classes like Texture (hiding some dx12 stuff)
+	//together can be useful for the different rendering oriented projects. My reasoning behind that is sometimes you want control, sometimes you don't want to
+	//touch any thing other than create material + object + render, this library should serve them together as a rendering helper suite may be the name "dxri" is
+	//too powerful :))
+
 };
