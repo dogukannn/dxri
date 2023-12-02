@@ -133,7 +133,7 @@ void Pipeline::Initialize(DXRI* dxri, VertexShader* vertexShader, PixelShader* p
 
 }
 
-void Pipeline::SetPipelineState(ID3D12CommandAllocator* commandAllocator, ID3D12GraphicsCommandList* commandList)
+void Pipeline::SetPipelineState(ID3D12GraphicsCommandList* commandList)
 {
 	commandList->SetPipelineState(PipelineState);
 

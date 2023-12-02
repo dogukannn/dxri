@@ -7,7 +7,7 @@ class Pipeline
 public:
 	void Initialize(DXRI* dxri, VertexShader* vertexShader, PixelShader* pixelShader);
 
-	void SetPipelineState(ID3D12CommandAllocator* commandAllocator, ID3D12GraphicsCommandList* commandList);
+	void SetPipelineState(ID3D12GraphicsCommandList* commandList);
 
 	void BindTexture(ID3D12Device* device, std::string name, class Texture* texture);
 	void BindTexture(ID3D12Device* device, std::string name, ID3D12Resource* texture);
