@@ -5,7 +5,7 @@
 class Pipeline
 {
 public:
-	void Initialize(ID3D12Device* device, VertexShader* vertexShader, PixelShader* pixelShader);
+	void Initialize(DXRI* dxri, VertexShader* vertexShader, PixelShader* pixelShader);
 
 	void SetPipelineState(ID3D12CommandAllocator* commandAllocator, ID3D12GraphicsCommandList* commandList);
 

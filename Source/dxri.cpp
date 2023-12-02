@@ -160,3 +160,34 @@ ID3D12GraphicsCommandList* DXRI::CreateGraphicsCommandList(ID3D12CommandAllocato
     return commandList;
 }
 
+ID3D12Resource* DXRI::CreateRawUploadBuffer(UINT size)
+{
+    ID3D12Resource* resource;
+	D3D12_HEAP_PROPERTIES cbHeapProperties;
+	cbHeapProperties.Type = D3D12_HEAP_TYPE_UPLOAD;
+	cbHeapProperties.CPUPageProperty = D3D12_CPU_PAGE_PROPERTY_UNKNOWN;
+	cbHeapProperties.MemoryPoolPreference = D3D12_MEMORY_POOL_UNKNOWN;
+	cbHeapProperties.CreationNodeMask = 1;
+	cbHeapProperties.VisibleNodeMask = 1;
+
+
+	D3D12_RESOURCE_DESC cbResourceDesc;
+	cbResourceDesc.Dimension = D3D12_RESOURCE_DIMENSION_BUFFER;
+	cbResourceDesc.Alignment = 0;
+	cbResourceDesc.Width = size;
+	cbResourceDesc.Height = 1;
+	cbResourceDesc.DepthOrArraySize = 1;
+	cbResourceDesc.MipLevels = 1;
+	cbResourceDesc.Format = DXGI_FORMAT_UNKNOWN;
+	cbResourceDesc.SampleDesc.Count = 1;
+	cbResourceDesc.SampleDesc.Quality = 0;
+	cbResourceDesc.Layout = D3D12_TEXTURE_LAYOUT_ROW_MAJOR;
+	cbResourceDesc.Flags = D3D12_RESOURCE_FLAG_NONE;
+
+	ThrowIfFailed(Device->CreateCommittedResource(
+		&cbHeapProperties, D3D12_HEAP_FLAG_NONE, &cbResourceDesc,
+		D3D12_RESOURCE_STATE_GENERIC_READ, nullptr, IID_PPV_ARGS(&resource)));
+
+    return resource;
+}
+

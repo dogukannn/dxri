@@ -8,7 +8,6 @@
 #include <wincodec.h>
 #include <atlbase.h>
 
-extern ID3D12Device* GDevice;
 
 class com_exception : public std::exception
 {

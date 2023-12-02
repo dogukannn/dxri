@@ -2,11 +2,13 @@
 #include "Shader.h"
 
 
+class DXRI;
+
 class DynamicRootSignature
 {
 public:
 	DynamicRootSignature();
-	bool Initialize(ID3D12Device* device, VertexShader* vertexShader, PixelShader* pixelShader);
+	bool Initialize(DXRI* dxri, VertexShader* vertexShader, PixelShader* pixelShader);
 	
     ID3D12RootSignature* rootSignature;
 

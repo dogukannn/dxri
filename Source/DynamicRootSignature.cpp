@@ -1,4 +1,5 @@
 #include "DynamicRootSignature.h"
+#include "dxri.h"
 
 #include <iostream>
 
@@ -6,11 +7,12 @@ DynamicRootSignature::DynamicRootSignature()
 {
 }
 
-bool DynamicRootSignature::Initialize(ID3D12Device* device, VertexShader* vertexShader, PixelShader* pixelShader)
+bool DynamicRootSignature::Initialize(DXRI* dxri, VertexShader* vertexShader, PixelShader* pixelShader)
 {
     D3D12_FEATURE_DATA_ROOT_SIGNATURE featureData;
     featureData.HighestVersion = D3D_ROOT_SIGNATURE_VERSION_1_1;
 
+    auto device = dxri->Device;
     if (FAILED(device->CheckFeatureSupport(D3D12_FEATURE_ROOT_SIGNATURE, &featureData, sizeof(featureData))))
     {
         featureData.HighestVersion = D3D_ROOT_SIGNATURE_VERSION_1_0;

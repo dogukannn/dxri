@@ -19,6 +19,8 @@ public:
 	ID3D12Resource* CreateDepthBuffer(UINT width, UINT height, ID3D12DescriptorHeap* descHeap);
 	ID3D12GraphicsCommandList* CreateGraphicsCommandList(ID3D12CommandAllocator* commandAllocator, ID3D12PipelineState* pipelineState);
 
+	ID3D12Resource* CreateRawUploadBuffer(UINT size);
+
 	ID3D12Device* Device = nullptr;
 	IDXGIAdapter1* Adapter = nullptr;
     IDXGIFactory4* factory = nullptr;

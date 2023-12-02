@@ -5,13 +5,15 @@
 
 #include "ConstantBuffer.h"
 #include "Texture.h"
+#include "dxri.h"
 
-void Pipeline::Initialize(ID3D12Device* device, VertexShader* vertexShader, PixelShader* pixelShader)
+void Pipeline::Initialize(DXRI* dxri, VertexShader* vertexShader, PixelShader* pixelShader)
 {
+	auto device = dxri->Device;
 	VShader = vertexShader;
 	PShader = pixelShader;
 	RootSignature = new DynamicRootSignature;
-    RootSignature->Initialize(device, VShader, PShader);
+    RootSignature->Initialize(dxri, VShader, PShader);
 
 	uint32_t totalDescriptorCount = 0;
 	for(auto [_, descTable] : RootSignature->Parameters.DescriptorTableIndexMap)
