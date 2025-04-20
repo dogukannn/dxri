@@ -57,11 +57,12 @@ void Pipeline::Initialize(DXRI* dxri, VertexShader* vertexShader, PixelShader* p
 	rasterDesc.DepthBiasClamp = D3D12_DEFAULT_DEPTH_BIAS_CLAMP;
 	rasterDesc.SlopeScaledDepthBias = D3D12_DEFAULT_SLOPE_SCALED_DEPTH_BIAS;
 	rasterDesc.DepthClipEnable = TRUE;
-	rasterDesc.MultisampleEnable = FALSE;
+	rasterDesc.MultisampleEnable = TRUE;
 	rasterDesc.AntialiasedLineEnable = FALSE;
 	rasterDesc.ForcedSampleCount = 0;
 	rasterDesc.ConservativeRaster = D3D12_CONSERVATIVE_RASTERIZATION_MODE_OFF;
-    psoDesc.RasterizerState = rasterDesc;
+
+	psoDesc.RasterizerState = rasterDesc;
 	psoDesc.PrimitiveTopologyType = D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;
 
 	D3D12_BLEND_DESC blendDesc;
